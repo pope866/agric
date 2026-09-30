@@ -8,7 +8,6 @@ import {
   Trash2,
   X,
   Ruler,
-  CalendarDays,
 } from "lucide-react";
 
 type Farm = {
