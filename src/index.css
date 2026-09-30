@@ -1,0 +1,211 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+}
+
+#root {
+  min-height: 100vh;
+}
+/* =========================
+   FARM DIARY
+========================= */
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--dark);
+  font-size: 20px;
+}
+
+.section-heading p {
+  margin: 5px 0 0;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* Diary list */
+
+.diary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.diary-card {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.2s ease;
+}
+
+.diary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.09);
+}
+
+.diary-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  background: var(--green-light);
+  border-radius: 12px;
+}
+
+.diary-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.diary-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.diary-top h3 {
+  margin: 8px 0 0;
+  color: var(--dark);
+  font-size: 17px;
+}
+
+.diary-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gray);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.diary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+  color: var(--gray);
+  font-size: 13px;
+}
+
+.diary-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.diary-meta strong {
+  color: var(--dark);
+}
+
+.diary-description {
+  margin: 14px 0 0;
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.diary-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Activity status */
+
+.status-planting {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.status-fertilizing {
+  color: #854d0e;
+  background: #fef9c3;
+}
+
+.status-spraying {
+  color: #9a3412;
+  background: #ffedd5;
+}
+
+.status-watering {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+.status-harvesting {
+  color: #7c2d12;
+  background: #ffedd5;
+}
+
+.status-livestock {
+  color: #6b21a8;
+  background: #f3e8ff;
+}
+
+.status-other {
+  color: #475569;
+  background: #f1f5f9;
+}
+
+/* Responsive diary */
+
+@media (max-width: 768px) {
+  .diary-card {
+    padding: 16px;
+  }
+
+  .diary-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .diary-date {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .diary-card {
+    flex-direction: column;
+  }
+
+  .diary-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+  .diary-actions {
+    flex-direction: column;
+  }
+
+  .diary-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
