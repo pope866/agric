@@ -1,17 +1,51 @@
+/* ==========================================
+   GLOBAL RESET & FOUNDATION
+   ========================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;   /* Prevents iOS from resizing text */
 }
 
 body {
   min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;               /* Prevents horizontal scroll */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;               /* Better on mobile browsers (dynamic vh) */
 }
-/* =========================
+
+/* Make images/icons never overflow */
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent iOS zoom on form inputs */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+/* ==========================================
    FARM DIARY
-========================= */
+   ========================================== */
 
 .eyebrow {
   display: inline-block;
@@ -42,7 +76,6 @@ body {
 }
 
 /* Diary list */
-
 .diary-list {
   display: flex;
   flex-direction: column;
@@ -136,47 +169,50 @@ body {
 }
 
 /* Activity status */
+.status-planting   { color: #166534; background: #dcfce7; }
+.status-fertilizing { color: #854d0e; background: #fef9c3; }
+.status-spraying   { color: #9a3412; background: #ffedd5; }
+.status-watering   { color: #1d4ed8; background: #dbeafe; }
+.status-harvesting { color: #7c2d12; background: #ffedd5; }
+.status-livestock  { color: #6b21a8; background: #f3e8ff; }
+.status-other     { color: #475569; background: #f1f5f9; }
 
-.status-planting {
-  color: #166534;
-  background: #dcfce7;
+
+/* ==========================================
+   RESPONSIVE — TABLETS (≤1024px)
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .section-heading {
+    margin: 22px 0 14px;
+  }
 }
 
-.status-fertilizing {
-  color: #854d0e;
-  background: #fef9c3;
-}
 
-.status-spraying {
-  color: #9a3412;
-  background: #ffedd5;
-}
-
-.status-watering {
-  color: #1d4ed8;
-  background: #dbeafe;
-}
-
-.status-harvesting {
-  color: #7c2d12;
-  background: #ffedd5;
-}
-
-.status-livestock {
-  color: #6b21a8;
-  background: #f3e8ff;
-}
-
-.status-other {
-  color: #475569;
-  background: #f1f5f9;
-}
-
-/* Responsive diary */
+/* ==========================================
+   RESPONSIVE — PHONES (≤768px)
+   ========================================== */
 
 @media (max-width: 768px) {
+  /* Section headings stack */
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+  .section-heading p {
+    font-size: 13px;
+  }
+
+  /* Diary */
   .diary-card {
     padding: 16px;
+    gap: 14px;
   }
 
   .diary-top {
@@ -187,17 +223,31 @@ body {
   .diary-date {
     white-space: normal;
   }
+
+  .diary-meta {
+    gap: 12px;
+  }
 }
+
+
+/* ==========================================
+   RESPONSIVE — SMALL PHONES (≤480px)
+   ========================================== */
 
 @media (max-width: 480px) {
   .diary-card {
     flex-direction: column;
+    gap: 12px;
   }
 
   .diary-icon {
     width: 42px;
     height: 42px;
     min-width: 42px;
+  }
+
+  .diary-top h3 {
+    font-size: 16px;
   }
 
   .diary-actions {
@@ -207,5 +257,26 @@ body {
   .diary-actions button {
     width: 100%;
     justify-content: center;
+    min-height: 44px;                /* Easy to tap */
+  }
+
+  .section-heading {
+    margin: 18px 0 12px;
+  }
+}
+
+
+/* ==========================================
+   ACCESSIBILITY: Reduce motion for users who prefer it
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
